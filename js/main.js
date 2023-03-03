@@ -304,16 +304,21 @@ const level = document.getElementById('level');
 const playBtn = document.getElementById('play-btn');
 let hasClicked = false;
 let bombsArray = [];
-let active = 0;
+let hasPlayed = false;
+
+// Riformula il displayText
 
 // createHtmlElement(element, className, levelConverterInNumber(level.value),container);
 
 playBtn.addEventListener('click', ()=>{
     const board = document.querySelector('.board');
     board.innerHTML = '';
-    active = 0;
-    active++;
-    displayText(textElemets, 0);
+    if(hasPlayed === false){
+        displayText(textElemets, 0);
+    }else {
+        displayText(textElemets, 2);
+    }
+    hasPlayed = true;
     createHtmlElementBasic(element, className, levelConverterInNumber(level.value),container);
     gameBasicVersion();
 });
@@ -353,7 +358,7 @@ function game(){
 
 function hasWon(controlList, bombsArrayLength, boxesLength){
     const numberToWin = boxesLength.length - bombsArrayLength.length;
-    if(controlList.length = numberToWin){
+    if(controlList.length === numberToWin){
         return true
     }else{
         return false;
@@ -364,6 +369,9 @@ function hasWon(controlList, bombsArrayLength, boxesLength){
 function displayText(elementsArray, position, str = ''){
     const elements = document.querySelectorAll(elementsArray);
     elements[position].classList.remove('active');
+    if(position === 2){
+        position = 0;
+    }
     position++
     elements[position].classList.add('active');
     if(str !== ''){
@@ -405,6 +413,7 @@ function gameBasicVersion(){
                     const winMessage = `You Won with a score of: ${score}`;
                     displayText(textElemets, 1, winMessage);
                 }
+                score = 0;
             }
             console.log(bombsArray);
             drawBasic(i, boxes, impactedBomb, bombsArray);
