@@ -1,0 +1,118 @@
+.d-flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+}
+
+.gapx-20 {
+    gap: 0 1.25rem;
+}
+
+.btn {
+    padding: 0.1875rem 1.5625rem;
+    font-family: inherit;
+    background-color: lightgray;
+    border: 1px solid #000;
+    border-radius: 0.3125rem;
+}
+
+select {
+    padding-top: 0.1875rem;
+    padding-right: 3.125rem;
+    font-family: inherit;
+    background-color: lightgray;
+    border-radius: 0.3125rem;
+}
+
+.board {
+    width: 31.25rem;
+    height: 31.25rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.empty {
+    background-color: lightgrey;
+}
+
+.one {
+    color: red;
+}
+
+.two {
+    color: lightcoral;
+}
+
+.three {
+    color: yellow;
+}
+
+.four {
+    color: purple
+}
+
+.five {
+    color: brown;
+}
+
+.six {
+    color: gold;
+}
+
+.seven {
+    color: pink;
+}
+
+.eight {
+    color: black;
+}
+
+.footer-text{
+    display: none;
+}
+
+.clicked{
+    background-color: #1818e9;
+}
+
+.bomb {
+    background-color: #d42222;
+}
+
+.active{
+    display: block;
+}
+
