@@ -291,39 +291,6 @@ function drawScore(score, element){
     element.innerHTML = score;
 }
 
-
-
-
-// PROGRAM
-
-const element = 'div';
-const className = 'box';
-const container = '.board';
-const textElemets = '.footer-text';
-const level = document.getElementById('level');
-const playBtn = document.getElementById('play-btn');
-let hasClicked = false;
-let bombsArray = [];
-let hasPlayed = false;
-
-// Riformula il displayText
-
-// createHtmlElement(element, className, levelConverterInNumber(level.value),container);
-
-playBtn.addEventListener('click', ()=>{
-    const board = document.querySelector('.board');
-    board.innerHTML = '';
-    if(hasPlayed === false){
-        displayText(textElemets, 0);
-    }else {
-        displayText(textElemets, 2);
-    }
-    hasPlayed = true;
-    createHtmlElementBasic(element, className, levelConverterInNumber(level.value),container);
-    gameBasicVersion();
-});
-
-
 function game(){
     const boxes = document.querySelectorAll('.box');
     const rightBorder = createRightBorder(boxes.length);
@@ -426,30 +393,36 @@ function gameBasicVersion(){
 
 
 
-// if(controlList.includes(input - yRatio - xRatio)){
-//     nearBombs++;
-// }
-// if(controlList.includes(input - yRatio)){
-//     nearBombs++;
-// }
-// if(controlList.includes(input - yRatio + xRatio)){
-//     nearBombs++;
-// }
-// if(controlList.includes(input - xRatio)){
-//     nearBombs++;
-// }
-// if(controlList.includes(input + xRatio)){
-//     nearBombs++;
-// }
-// if(controlList.includes(input + yRatio - xRatio)){
-//     nearBombs++;
-// }
-// if(controlList.includes(input + yRatio)){
-//     nearBombs++;
-// }
-// if(controlList.includes(input + yRatio + xRatio)){
-//     nearBombs++;
-// }
-// return nearBombs;
+// PROGRAM
+
+const element = 'div';
+const className = 'box';
+const container = '.board';
+const textElemets = '.footer-text';
+const level = document.getElementById('level');
+const playBtn = document.getElementById('play-btn');
+let hasClicked = false;
+let bombsArray = [];
+let hasPlayed = false;
+
+
+
+playBtn.addEventListener('click', ()=>{
+    const board = document.querySelector('.board');
+    board.innerHTML = '';
+    if(hasPlayed === false){
+        displayText(textElemets, 0);
+    }else {
+        displayText(textElemets, 2);
+    }
+    hasPlayed = true;
+    createHtmlElementBasic(element, className, levelConverterInNumber(level.value),container);
+    gameBasicVersion();
+});
+
+
+
+
+
 
 
