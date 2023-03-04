@@ -291,13 +291,12 @@ function drawScore(score, element){
     element.innerHTML = score;
 }
 
-function game(){
+function gameAdvancedVersion(){
     const boxes = document.querySelectorAll('.box');
     const rightBorder = createRightBorder(boxes.length);
     const leftBorder = createLeftBorder(boxes.length);
     const topBorder = createTopBorder(boxes.length);
     const bottomBorder = createBottomBorder(boxes.length);
-
     for(let i = 0; i < boxes.length; i++){
         boxes[i].addEventListener('click', ()=>{
             let nearBombs = 0;
@@ -399,9 +398,23 @@ function gameBasicVersion(){
     }
 }
 
+function gameBasic(element, className, quantity = 10, container){
+    createHtmlElementBasic(element, className, quantity = 10, container);
+    gameBasicVersion();
+}
 
+function gameAdvanced(element, className, quantity = 10, container){
+    createHtmlElement(element, className, quantity = 10, container);
+    gameAdvancedVersion();
+}
 
-
+function game(version, element, className, quantity = 10, container){
+    if(version === 'basic'){
+        gameBasic(element, className, quantity = 10, container);
+    }else {
+        gameAdvanced(element, className, quantity = 10, container);
+    }
+}
 
 
 
@@ -414,6 +427,7 @@ const container = '.board';
 const textElemets = '.footer-text';
 const level = document.getElementById('level');
 const playBtn = document.getElementById('play-btn');
+const version = document.getElementById('version');
 let hasClicked = false;
 let bombsArray = [];
 let hasPlayed = false;
@@ -429,11 +443,12 @@ playBtn.addEventListener('click', ()=>{
         displayText(textElemets, 2);
     }
     hasPlayed = true;
-    createHtmlElementBasic(element, className, levelConverterInNumber(level.value),container);
-    gameBasicVersion();
+    game(version.value, element, className, levelConverterInNumber(level.value),container);
 });
 
 // Remove gli event listener;
+
+console.log(version.value);
 
 
 
