@@ -1,6 +1,6 @@
 'use strict';
 
-// FUNTIONS
+// FUNCTIONS
 
 function levelConverterInNumber(input){
     let number;
@@ -346,6 +346,14 @@ function displayText(elementsArray, position, str = ''){
     }
 }
 
+function removeListeners(boxes) {
+    for (let i = 0; i < boxes.length; i++) {
+      const box = boxes[i];
+      const newBox = box.cloneNode(true);
+      box.parentNode.replaceChild(newBox, box);
+    }
+  }
+
 function gameBasicVersion(){
     const boxes = document.querySelectorAll('.box');
     const scoreText = document.getElementById('score');
@@ -372,22 +380,27 @@ function gameBasicVersion(){
                     hasWonned = hasWon(clickedBoxes, bombsArray, boxes);
                 }
             }
+            console.log(bombsArray);
+            drawBasic(i, boxes, impactedBomb, bombsArray);
             if(impactedBomb || hasWonned){
                 if(impactedBomb){
                     const loseMessage = `Sorry you lost with a score of: ${score}`;
                     displayText(textElemets, 1, loseMessage);
+                    score = 0;
+                    removeListeners(boxes);
                 }else if(hasWonned){
                     const winMessage = `You Won with a score of: ${score}`;
                     displayText(textElemets, 1, winMessage);
+                    score = 0;
                 }
-                score = 0;
             }
-            console.log(bombsArray);
-            drawBasic(i, boxes, impactedBomb, bombsArray);
             drawScore(score, scoreText);
         });
     }
 }
+
+
+
 
 
 
@@ -420,7 +433,7 @@ playBtn.addEventListener('click', ()=>{
     gameBasicVersion();
 });
 
-
+// Remove gli event listener;
 
 
 
